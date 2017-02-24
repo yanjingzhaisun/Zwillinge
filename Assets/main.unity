@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 504450144}
   - component: {fileID: 504450143}
   m_Layer: 0
-  m_Name: Sender
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 0
+  speed: 2
 --- !u!212 &504450144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -614,7 +615,7 @@ GameObject:
   - component: {fileID: 1307317483}
   - component: {fileID: 1307317482}
   m_Layer: 0
-  m_Name: Sender
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -632,6 +633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 1
+  speed: 2
 --- !u!212 &1307317483
 SpriteRenderer:
   m_ObjectHideFlags: 0

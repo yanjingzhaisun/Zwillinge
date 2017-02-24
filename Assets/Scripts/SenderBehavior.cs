@@ -8,6 +8,7 @@ public enum Player {One, Two};
 public class SenderBehavior : MonoBehaviour {
 
 	public Player player;
+	public float speed;
 	private string fireButton;
 	KeyCode[] controls;
 	// Use this for initialization
@@ -27,7 +28,7 @@ public class SenderBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(GetMyInput("Horizontal") * Time.deltaTime, GetMyInput("Vertical") * Time.deltaTime, 0);
+		transform.Translate(GetMyInput("Horizontal") * speed * Time.deltaTime, GetMyInput("Vertical") * speed * Time.deltaTime, 0);
 		if(Input.GetButtonDown(fireButton)) {
 			Debug.Log(fireButton);
 			CreateWave(new Vector2(GetMyInput("AimHorizontal"), GetMyInput("AimVertical")));
