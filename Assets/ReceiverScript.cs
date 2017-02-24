@@ -20,6 +20,12 @@ public class ReceiverScript : MonoBehaviour {
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().action = action;
 			InterpretAction(action);
+			if(layer == 8) {
+				GetComponent<SpriteRenderer>().color = Color.red;
+			}
+			else {
+				GetComponent<SpriteRenderer>().color = Color.blue;
+			}
 		}
 	}
 
