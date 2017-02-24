@@ -8,7 +8,7 @@ public class Wave : MonoBehaviour {
 	private float size;
 	private float alpha = 1;
 	private float changeSpeed = 5;
-	public static float baseRadius = 17;
+	public static float baseRadius = 0.5f;
 	private float targetRadius = baseRadius;
 	Color startColor;
 	SpriteRenderer renderer;
