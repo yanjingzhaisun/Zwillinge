@@ -8,6 +8,8 @@ public class Wave : MonoBehaviour {
 	private float size;
 	private float alpha = 1;
 	private float changeSpeed = 5;
+	public static float baseRadius = 17;
+	private float targetRadius = baseRadius;
 	Color startColor;
 	SpriteRenderer renderer;
 	public Action action;
@@ -31,7 +33,7 @@ public class Wave : MonoBehaviour {
 	void RescaleObject() {
 		transform.localScale = new Vector3(1 + size, 1 + size, 1 + size);
 		Color newColor = renderer.color;
-		newColor.a -= (Time.deltaTime * 0.3f);
+		newColor.a = (targetRadius - 1 - size) / targetRadius;//Time.deltaTime * 0.3f);
 		if(newColor.a < 0) {
 			Destroy(gameObject);
 		}
@@ -43,20 +45,22 @@ public class Wave : MonoBehaviour {
 			#if DISCRETEINPUT
 			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(action, layer);
 			#else
-			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(movementVector, layer);
+			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(movementVector, layer, targetRadius - size);
 			#endif
 
 		}
 	}
 
-	public void SetProperties(Action action, int newLayer) {
+	public void SetProperties(Action action, int newLayer, float newRadius) {
 		action = action;
 		layer = newLayer;
+		targetRadius = newRadius;
 	}
 
-	public void SetProperties(Vector2 newMovementVector,int newLayer) {
+	public void SetProperties(Vector2 newMovementVector,int newLayer, float newRadius) {
 		Debug.Log("movementVector property on wave set to " + movementVector.ToString());
 		movementVector = newMovementVector;
 		layer = newLayer;
+		targetRadius = newRadius;
 	}
 }

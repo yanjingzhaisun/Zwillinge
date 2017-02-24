@@ -27,7 +27,7 @@ public class SenderBehavior : MonoBehaviour {
 		transform.Translate(GetMyInput("Horizontal") * Time.deltaTime, GetMyInput("Vertical") * Time.deltaTime, 0);
 		if(Input.GetButtonDown("Fire1")) {
 			CreateWave(new Vector2(GetMyInput("AimHorizontal"), GetMyInput("AimVertical")));
-			Debug.Log(GetMyInput("AimHorizontal"));
+			Debug.Log(GetMyInput("AimVertical"));
 		}
 		if(Input.GetKeyDown(controls[0])) {
 			CreateWave(Action.Up);
@@ -45,13 +45,13 @@ public class SenderBehavior : MonoBehaviour {
 
 	void CreateWave(Action action) {
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-		temp.GetComponent<Wave>().SetProperties(action, 7 + (int) player);
+		temp.GetComponent<Wave>().SetProperties(action, 7 + (int) player, Wave.baseRadius);
 	}
 
 	void CreateWave(Vector2 movementVector) {
 		Debug.Log("Create Wave movementVector " + movementVector.ToString());
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-		temp.GetComponent<Wave>().SetProperties(movementVector, 7 + (int)player);
+		temp.GetComponent<Wave>().SetProperties(movementVector, 7 + (int)player, Wave.baseRadius);
 	}
 
 	float GetMyInput(string axisName) {

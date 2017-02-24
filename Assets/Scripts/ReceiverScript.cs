@@ -15,21 +15,21 @@ public class ReceiverScript : MonoBehaviour {
 		
 	}
 
-	public void Relay(Action action, int layer) {
+	public void Relay(Action action, int layer, float radiusSize) {
 		if(gameObject.layer != layer || !moving) {
 			gameObject.layer = layer;
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-			temp.GetComponent<Wave>().SetProperties(action, layer);
+			temp.GetComponent<Wave>().SetProperties(action, layer, radiusSize);
 			InterpretAction(action);
 			SetColor(layer);
 		}
 	}
 
-	public void Relay(Vector2 movementVector, int layer) {
+	public void Relay(Vector2 movementVector, int layer, float radiusSize) {
 		if(gameObject.layer != layer || !moving) {
 			gameObject.layer = layer;
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-			temp.GetComponent<Wave>().SetProperties(movementVector, layer);
+			temp.GetComponent<Wave>().SetProperties(movementVector, layer, radiusSize);
 			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2));
 			SetColor(layer);
 		}
