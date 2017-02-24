@@ -11,6 +11,7 @@ public class Wave : MonoBehaviour {
 	Color startColor;
 	SpriteRenderer renderer;
 	public Action action;
+	public Vector2 movementVector;
 	public int layer;
 	// Use this for initialization
 
@@ -39,12 +40,23 @@ public class Wave : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == "Receiver") {
+			#if DISCRETEINPUT
 			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(action, layer);
+			#else
+			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(movementVector, layer);
+			#endif
+
 		}
 	}
 
 	public void SetProperties(Action action, int newLayer) {
 		action = action;
+		layer = newLayer;
+	}
+
+	public void SetProperties(Vector2 newMovementVector,int newLayer) {
+		Debug.Log("movementVector property on wave set to " + movementVector.ToString());
+		movementVector = newMovementVector;
 		layer = newLayer;
 	}
 }
