@@ -9,6 +9,8 @@ public class SenderBehavior : MonoBehaviour {
 
 	public Player player;
 	public float speed;
+	public float shotCooldownTime;
+	private float coolDownTimer;
 	private string fireButton;
 	KeyCode[] controls;
 	// Use this for initialization
@@ -24,15 +26,16 @@ public class SenderBehavior : MonoBehaviour {
 				GetComponent<SpriteRenderer>().color = Color.blue;
 				controls = new KeyCode[] {KeyCode.I, KeyCode.K, KeyCode.J, KeyCode.L};	
 			}
+		coolDownTimer = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		transform.Translate(GetMyInput("Horizontal") * speed * Time.deltaTime, GetMyInput("Vertical") * speed * Time.deltaTime, 0);
-		if(Input.GetButtonDown(fireButton)) {
+		if(Input.GetButtonDown(fireButton) && coolDownTimer <= 0) {
 			Debug.Log(fireButton);
 			CreateWave(new Vector2(GetMyInput("AimHorizontal"), GetMyInput("AimVertical")));
-			Debug.Log(GetMyInput("AimVertical"));
+			coolDownTimer = shotCooldownTime;
 		}
 		if(Input.GetKeyDown(controls[0])) {
 			CreateWave(Action.Up);
@@ -46,6 +49,7 @@ public class SenderBehavior : MonoBehaviour {
 		else if(Input.GetKeyDown(controls[3])) {
 			CreateWave(Action.Right);
 		}
+		coolDownTimer -= Time.deltaTime;
 	}
 
 	void CreateWave(Action action) {
