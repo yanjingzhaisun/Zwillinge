@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class AudioDirector : MonoBehaviour {
 	public static AudioDirector instance;
 	public List<AudioMixerSnapshot> snapshots;
+	//public List<>
 
 	void Awake() {
 		if (instance == null)
@@ -43,6 +44,9 @@ public class AudioDirector : MonoBehaviour {
 				PlaySnapshots(5);
 		}
 		#endif
+	}
+
+	public void PlaySFX(int NoteNumber) { 
 	}
 
 }
