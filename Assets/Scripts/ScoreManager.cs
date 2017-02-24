@@ -66,7 +66,7 @@ public class ScoreManager : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other) {
 		
-		enclosedReceivers.Remove(other.gameObject)
+		enclosedReceivers.Remove(other.gameObject);
 	}
 
 	int TallyScore(int layer) {

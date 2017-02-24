@@ -8,6 +8,7 @@ public class LevelCreator : MonoBehaviour {
 	public float height;
 	public int numReceivers;
 	public int numScoreAreas;
+	public float chanceOfReset;
 	// Use this for initialization
 	void Start () {
 		/*for(int i = 0; i < numReceivers; i++) {
@@ -21,6 +22,11 @@ public class LevelCreator : MonoBehaviour {
 
 		CreateObjects("Receiver", numReceivers);
 		CreateObjects("Area", numScoreAreas);
+		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Receiver")) {
+			if(Random.value < chanceOfReset) {
+				obj.GetComponent<ReceiverScript>().resetReceiver = true;
+			}
+		}
 	}
 	
 	// Update is called once per frame

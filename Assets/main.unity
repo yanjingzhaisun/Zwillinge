@@ -774,6 +774,7 @@ MonoBehaviour:
   height: 20
   numReceivers: 100
   numScoreAreas: 5
+  chanceOfReset: 0.05
 --- !u!4 &1524702419
 Transform:
   m_ObjectHideFlags: 0
