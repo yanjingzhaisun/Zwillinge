@@ -8,7 +8,7 @@ public class Wave : MonoBehaviour {
 	private float size;
 	private float alpha = 1;
 	private float changeSpeed = 1.2f;
-	public static float baseRadius = 1f;
+	public static float baseRadius = 0.8f;
 	private float targetRadius = baseRadius;
 	Color startColor;
 	SpriteRenderer renderer;
@@ -44,7 +44,7 @@ public class Wave : MonoBehaviour {
 		if(other.tag == "Receiver") {
 			float targetSize = targetRadius - size;
 			if(layer == 9) {
-				targetSize = 5;
+				targetSize = 1;
 			}
 			#if DISCRETEINPUT
 			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(action, layer);
