@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour {
 	new float time;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		enclosedReceivers = new List<GameObject>();
 		time = 0f;
 		p1Score = 0;
@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour {
 	void Update () {
 
 
-		if (time >= 1f) {
+		if (time >= 1f && enclosedReceivers.Count > 0) {
 			p1Score = TallyScore(7);
 			p2Score = TallyScore(8);
 			time = 0f;
@@ -44,7 +44,10 @@ public class ScoreManager : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col){
 		count = count + 1;
 		enclosedReceivers.Add(col.gameObject);
-		Debug.Log (count);
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		enclosedReceivers.Add(other.gameObject);
 	}
 
 	void OnCollisionStay2D(Collision2D col){
@@ -52,16 +55,24 @@ public class ScoreManager : MonoBehaviour {
 		time += Time.deltaTime;
 	}
 
+	void OnTriggerStay2D(Collider2D other) {
+		time += Time.deltaTime;
+	}
+
 	void OnCollisionExit2D(Collision2D col){
 		count = count - 1;
 		enclosedReceivers.Remove(col.gameObject);
 	}
-	
+
+	void OnTriggerExit2D(Collider2D other) {
+		
+		enclosedReceivers.Remove(other.gameObject)
+	}
 
 	int TallyScore(int layer) {
 		int total = 0;
-		foreach(GameObject obj in enclosedReceivers) {
-			if(obj.layer == layer) {
+		for(int i = 0; i < enclosedReceivers.Count; i++) {
+			if(enclosedReceivers[i] != null && enclosedReceivers[i].layer == layer) {
 				total++;
 			}
 		}
