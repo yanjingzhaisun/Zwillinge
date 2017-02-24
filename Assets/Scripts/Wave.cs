@@ -8,7 +8,7 @@ public class Wave : MonoBehaviour {
 	private float size;
 	private float alpha = 1;
 	private float changeSpeed = 1.2f;
-	public static float baseRadius = 0.5f;
+	public static float baseRadius = 1f;
 	private float targetRadius = baseRadius;
 	Color startColor;
 	SpriteRenderer renderer;
@@ -33,7 +33,7 @@ public class Wave : MonoBehaviour {
 	void RescaleObject() {
 		transform.localScale = new Vector3(0.1f + size, 0.1f + size, 0.1f + size);
 		Color newColor = renderer.color;
-		newColor.a = (targetRadius - 1 - size) / targetRadius;//Time.deltaTime * 0.3f);
+		newColor.a = 1 - (0.1f + size / targetRadius);//(targetRadius - 1 - size) / targetRadius;
 		if(newColor.a < 0) {
 			Destroy(gameObject);
 		}

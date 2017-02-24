@@ -92,14 +92,14 @@ public class ReceiverScript : MonoBehaviour {
 	void ResetRelay(Action action) {
 		lark.Enqueue(9);
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-		temp.GetComponent<Wave>().SetProperties(action, 9, 100);
+		temp.GetComponent<Wave>().SetProperties(action, 9, 1);
 		resetReceiver = false;
 	}
 
 	void ResetRelay(Vector2 movementVector) {
 		lark.Enqueue(9);
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-		temp.GetComponent<Wave>().SetProperties(movementVector, 9, 100);
+		temp.GetComponent<Wave>().SetProperties(movementVector, 9, 1);
 		resetReceiver = false;
 	}
 }
