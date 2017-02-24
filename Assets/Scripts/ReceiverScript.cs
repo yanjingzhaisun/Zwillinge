@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ReceiverScript : MonoBehaviour {
 
+	bool moving;
 	// Use this for initialization
 	void Start () {
-		
+		moving = false;
 	}
 	
 	// Update is called once per frame
@@ -15,7 +16,7 @@ public class ReceiverScript : MonoBehaviour {
 	}
 
 	public void Relay(Action action, int layer) {
-		if(gameObject.layer != layer) {
+		if(gameObject.layer != layer || !moving) {
 			gameObject.layer = layer;
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().action = action;
@@ -52,8 +53,11 @@ public class ReceiverScript : MonoBehaviour {
 	IEnumerator Move(Vector3 movementVector, float timeInterval) {
 		float t = 0;
 		while(t < timeInterval) {
+			moving = true;
 			transform.position += (movementVector * Time.deltaTime);
+			t += Time.deltaTime;
 			yield return null;
 		}
+		moving = false;
 	}
 }
