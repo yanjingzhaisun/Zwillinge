@@ -310,7 +310,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -342,7 +342,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 460166047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -378,6 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 0
   speed: 2
+  shotCooldownTime: 0
 --- !u!212 &504450144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -635,6 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 1
   speed: 2
+  shotCooldownTime: 0
 --- !u!212 &1307317483
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -782,7 +784,7 @@ MonoBehaviour:
   height: 20
   numReceivers: 100
   numScoreAreas: 5
-  chanceOfReset: 0.05
+  chanceOfReset: 0
 --- !u!4 &1524702419
 Transform:
   m_ObjectHideFlags: 0
