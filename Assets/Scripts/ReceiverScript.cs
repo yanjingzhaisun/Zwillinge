@@ -19,9 +19,9 @@ public class ReceiverScript : MonoBehaviour {
 		if(gameObject.layer != layer || !moving) {
 			gameObject.layer = layer;
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-			temp.GetComponent<Wave>().action = action;
+			temp.GetComponent<Wave>().SetProperties(action, layer);
 			InterpretAction(action);
-			if(layer == 8) {
+			if(layer == 7) {
 				GetComponent<SpriteRenderer>().color = Color.red;
 			}
 			else {

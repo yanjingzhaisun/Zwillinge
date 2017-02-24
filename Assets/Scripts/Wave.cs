@@ -11,9 +11,10 @@ public class Wave : MonoBehaviour {
 	Color startColor;
 	SpriteRenderer renderer;
 	public Action action;
+	public int layer;
 	// Use this for initialization
 
-	void Start () {
+	void Awake () {
 		renderer = GetComponent<SpriteRenderer>();
 		size = 0;
 		startColor = GetComponent<SpriteRenderer>().color;
@@ -38,7 +39,12 @@ public class Wave : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == "Receiver") {
-			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(action, 8);
+			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(action, layer);
 		}
+	}
+
+	public void SetProperties(Action action, int newLayer) {
+		action = action;
+		layer = newLayer;
 	}
 }

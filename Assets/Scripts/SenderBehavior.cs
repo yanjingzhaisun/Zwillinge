@@ -13,9 +13,11 @@ public class SenderBehavior : MonoBehaviour {
 	void Start () {
 		if(player == Player.One) 
 			{
+				GetComponent<SpriteRenderer>().color = Color.red;
 				controls = new KeyCode[] {KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D};
 			}
 		else {
+				GetComponent<SpriteRenderer>().color = Color.blue;
 				controls = new KeyCode[] {KeyCode.I, KeyCode.K, KeyCode.J, KeyCode.L};	
 			}
 	}
@@ -38,6 +40,6 @@ public class SenderBehavior : MonoBehaviour {
 
 	void CreateWave(Action action) {
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-		temp.GetComponent<Wave>().action = action;
+		temp.GetComponent<Wave>().SetProperties(action, 7 + (int) player);
 	}
 }
