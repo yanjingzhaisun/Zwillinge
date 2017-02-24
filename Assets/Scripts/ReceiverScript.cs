@@ -21,12 +21,17 @@ public class ReceiverScript : MonoBehaviour {
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().SetProperties(action, layer);
 			InterpretAction(action);
-			if(layer == 7) {
-				GetComponent<SpriteRenderer>().color = Color.red;
-			}
-			else {
-				GetComponent<SpriteRenderer>().color = Color.blue;
-			}
+			SetColor(layer);
+		}
+	}
+
+	public void Relay(Vector2 movementVector, int layer) {
+		if(gameObject.layer != layer || !moving) {
+			gameObject.layer = layer;
+			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
+			temp.GetComponent<Wave>().SetProperties(movementVector, layer);
+			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2));
+			SetColor(layer);
 		}
 	}
 
@@ -52,6 +57,7 @@ public class ReceiverScript : MonoBehaviour {
 
 	IEnumerator Move(Vector3 movementVector, float timeInterval) {
 		float t = 0;
+		Debug.Log(movementVector);
 		while(t < timeInterval) {
 			moving = true;
 			transform.position += (movementVector * Time.deltaTime);
@@ -59,5 +65,14 @@ public class ReceiverScript : MonoBehaviour {
 			yield return null;
 		}
 		moving = false;
+	}
+
+	void SetColor(int layer) {
+		if(layer == 7) {
+				GetComponent<SpriteRenderer>().color = Color.red;
+		}
+		else {
+				GetComponent<SpriteRenderer>().color = Color.blue;
+		}
 	}
 }
