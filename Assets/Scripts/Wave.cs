@@ -7,7 +7,7 @@ public class Wave : MonoBehaviour {
 	public float expansionSpeed;
 	private float size;
 	private float alpha = 1;
-	private float changeSpeed = 5;
+	private float changeSpeed = 1.2f;
 	public static float baseRadius = 0.5f;
 	private float targetRadius = baseRadius;
 	Color startColor;
@@ -31,7 +31,7 @@ public class Wave : MonoBehaviour {
 	}
 
 	void RescaleObject() {
-		transform.localScale = new Vector3(1 + size, 1 + size, 1 + size);
+		transform.localScale = new Vector3(0.1f + size, 0.1f + size, 0.1f + size);
 		Color newColor = renderer.color;
 		newColor.a = (targetRadius - 1 - size) / targetRadius;//Time.deltaTime * 0.3f);
 		if(newColor.a < 0) {
