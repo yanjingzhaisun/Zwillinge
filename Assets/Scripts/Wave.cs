@@ -42,10 +42,14 @@ public class Wave : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == "Receiver") {
+			float targetSize = targetRadius - size;
+			if(layer == 9) {
+				targetSize = 5;
+			}
 			#if DISCRETEINPUT
 			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(action, layer);
 			#else
-			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(movementVector, layer, targetRadius - size);
+			other.gameObject.gameObject.GetComponent<ReceiverScript>().Relay(movementVector, layer, targetSize);
 			#endif
 
 		}

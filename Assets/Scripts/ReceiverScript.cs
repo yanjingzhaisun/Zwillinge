@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ReceiverScript : MonoBehaviour {
 
-	bool moving;
+	public bool resetReceiver;
+	Queue<int> lark;
 	// Use this for initialization
 	void Start () {
-		moving = false;
+		lark = new Queue<int>();
 	}
 	
 	// Update is called once per frame
@@ -16,22 +17,33 @@ public class ReceiverScript : MonoBehaviour {
 	}
 
 	public void Relay(Action action, int layer, float radiusSize) {
-		if(gameObject.layer != layer || !moving) {
+		if(!lark.Contains(layer)) {
+			lark.Enqueue(layer);
 			gameObject.layer = layer;
+			SetColor(layer);
+			if(resetReceiver) {
+				ResetRelay(action);
+				return;
+			}
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().SetProperties(action, layer, radiusSize);
 			InterpretAction(action);
-			SetColor(layer);
 		}
 	}
 
 	public void Relay(Vector2 movementVector, int layer, float radiusSize) {
-		if(gameObject.layer != layer || !moving) {
+		if(!lark.Contains(layer)) {
+			lark.Enqueue(layer);
 			gameObject.layer = layer;
+			SetColor(layer);
+			if(resetReceiver) {
+				Debug.Log("resetting" + lark.Contains(layer).ToString());
+				ResetRelay(movementVector);
+				return;
+			}
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().SetProperties(movementVector, layer, radiusSize);
 			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2));
-			SetColor(layer);
 		}
 	}
 
@@ -59,20 +71,34 @@ public class ReceiverScript : MonoBehaviour {
 		float t = 0;
 		Debug.Log(movementVector);
 		while(t < timeInterval) {
-			moving = true;
 			transform.position += (movementVector * Time.deltaTime);
 			t += Time.deltaTime;
 			yield return null;
 		}
-		moving = false;
+		lark.Dequeue();
 	}
 
 	void SetColor(int layer) {
 		if(layer == 7) {
 				GetComponent<SpriteRenderer>().color = Color.red;
 		}
-		else {
+		else if (layer == 8){
 				GetComponent<SpriteRenderer>().color = Color.blue;
 		}
+		else {
+				GetComponent<SpriteRenderer>().color = Color.grey;
+		}
+	}
+
+	void ResetRelay(Action action) {
+		lark.Enqueue(9);
+		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
+		temp.GetComponent<Wave>().SetProperties(action, 9, 100);
+	}
+
+	void ResetRelay(Vector2 movementVector) {
+		lark.Enqueue(9);
+		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
+		temp.GetComponent<Wave>().SetProperties(movementVector, 9, 100);
 	}
 }
