@@ -12,6 +12,9 @@ public class Wave : MonoBehaviour {
 	private float targetRadius = baseRadius;
 	Color startColor;
 	SpriteRenderer renderer;
+	public Color player1Color;
+	public Color player2Color;
+	public Color resetColor;
 	public Action action;
 	public Vector2 movementVector;
 	public int layer;
@@ -65,5 +68,18 @@ public class Wave : MonoBehaviour {
 		movementVector = newMovementVector;
 		layer = newLayer;
 		targetRadius = newRadius;
+		SetColor();
+	}
+
+	void SetColor() {
+		if(layer == 7) {
+			renderer.color = player1Color;
+		}
+		else if(layer == 8) {
+			renderer.color = player2Color;
+		}
+		else {
+			renderer.color = resetColor;
+		}
 	}
 }
