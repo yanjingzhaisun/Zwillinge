@@ -69,7 +69,6 @@ public class ReceiverScript : MonoBehaviour {
 
 	IEnumerator Move(Vector3 movementVector, float timeInterval) {
 		float t = 0;
-		Debug.Log(movementVector);
 		while(t < timeInterval) {
 			transform.position += (movementVector * Time.deltaTime);
 			t += Time.deltaTime;

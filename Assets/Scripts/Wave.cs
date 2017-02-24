@@ -62,7 +62,6 @@ public class Wave : MonoBehaviour {
 	}
 
 	public void SetProperties(Vector2 newMovementVector,int newLayer, float newRadius) {
-		Debug.Log("movementVector property on wave set to " + movementVector.ToString());
 		movementVector = newMovementVector;
 		layer = newLayer;
 		targetRadius = newRadius;

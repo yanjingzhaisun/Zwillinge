@@ -23,9 +23,9 @@ public class TotalScore : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		score1 = Area1.GetComponent<ScoreManager>().score;
+/*		score1 = Area1.GetComponent<ScoreManager>().score;
 		score2 = Area2.GetComponent<ScoreManager>().score;
-		score3 = Area3.GetComponent<ScoreManager>().score;
+		score3 = Area3.GetComponent<ScoreManager>().score;*/
 
 		Debug.Log("score1:"+score1+"score2:"+score2+"score3"+score3);
 
