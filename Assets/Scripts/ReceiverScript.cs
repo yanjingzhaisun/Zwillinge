@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ReceiverScript : MonoBehaviour {
 
+	public List<Sprite> ReceiverStatus;
+
 	public bool resetReceiver;
 	Queue<int> lark;
 	// Use this for initialization
@@ -79,13 +81,16 @@ public class ReceiverScript : MonoBehaviour {
 
 	void SetColor(int layer) {
 		if(layer == 7) {
-				GetComponent<SpriteRenderer>().color = Color.red;
+			GetComponent<SpriteRenderer>().sprite = ReceiverStatus[1];
+			GetComponent<AutoRotation>().rotationSpeed = 2f;
 		}
 		else if (layer == 8){
-				GetComponent<SpriteRenderer>().color = Color.blue;
+				GetComponent<SpriteRenderer>().sprite = ReceiverStatus[2];
+			GetComponent<AutoRotation>().rotationSpeed = -2f;
 		}
 		else {
-				GetComponent<SpriteRenderer>().color = Color.grey;
+			GetComponent<SpriteRenderer>().sprite = ReceiverStatus[0];
+			GetComponent<AutoRotation>().rotationSpeed = 0f;
 		}
 	}
 
