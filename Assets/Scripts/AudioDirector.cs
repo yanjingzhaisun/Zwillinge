@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 public class AudioDirector : MonoBehaviour {
 	public static AudioDirector instance;
 	public List<AudioMixerSnapshot> snapshots;
+	public AudioSource final;
 	List<AudioSource> SFXs;
 
 	void Awake() {
@@ -44,6 +45,8 @@ public class AudioDirector : MonoBehaviour {
 				PlaySnapshots(4);
 			else if (Input.GetKeyUp(KeyCode.Alpha5))
 				PlaySnapshots(5);
+			else if (Input.GetKeyUp(KeyCode.Alpha6))
+				PlayFinal();
 		}
 		#endif
 	}
@@ -55,6 +58,10 @@ public class AudioDirector : MonoBehaviour {
 	public void PlaySFX() {
 		int noteNumber = Random.Range(0, SFXs.Count);
 		PlaySFX(noteNumber);
+	}
+
+	public void PlayFinal() {
+		final.Play();
 	}
 
 }
