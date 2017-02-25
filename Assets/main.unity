@@ -1494,7 +1494,12 @@ TrailRenderer:
     textureMode: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!1001 &1388052231
+--- !u!4 &1415882989 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4960788684628160, guid: 77a5c2b24ff0646c299d30c2cc23fc24,
+    type: 2}
+  m_PrefabInternal: {fileID: 1910691914}
+--- !u!1001 &1436860323
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1533,14 +1538,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 82689510333782614, guid: d555865b3a1694f0eb4cebc991673e47,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6701ac3a27dcc4e52adb796d3eaf8201, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d555865b3a1694f0eb4cebc991673e47, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1415882989 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4960788684628160, guid: 77a5c2b24ff0646c299d30c2cc23fc24,
-    type: 2}
-  m_PrefabInternal: {fileID: 1910691914}
 --- !u!1 &1452086520
 GameObject:
   m_ObjectHideFlags: 0

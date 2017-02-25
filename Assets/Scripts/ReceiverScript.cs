@@ -81,7 +81,9 @@ public class ReceiverScript : MonoBehaviour {
 
 	IEnumerator Move(Vector3 movementVector, float timeInterval, int layerInfo) {
 		reverser = 1;
-		AudioDirector.instance.PlaySFX();
+		if (layerInfo != 9)
+			AudioDirector.instance.PlaySFX();
+		else AudioDirector.instance.PlayReset();
 
 		Vector3 orthoDir =  Vector3.Cross(movementVector, new Vector3(0, 0, 1f)).normalized;
 		movementVector += orthoDir * Random.Range(-0.3f, 0.3f) * movementVector.magnitude;

@@ -8,7 +8,10 @@ public class AudioDirector : MonoBehaviour {
 	public static AudioDirector instance;
 	public List<AudioMixerSnapshot> snapshots;
 	public AudioSource final;
+	public AudioSource reset;
+	public AudioSource movewall;
 	List<AudioSource> SFXs;
+	List<AudioSource> resets;
 
 	void Awake() {
 		if (instance == null)
@@ -26,6 +29,8 @@ public class AudioDirector : MonoBehaviour {
 	}
 
 	void Start() {
+		resets = new List<AudioSource>();
+		resets.Add(reset);
 		SFXs = transform.Find("SFX").GetComponentsInChildren<AudioSource>().ToList();
 		PlaySnapshots(2);
 	}
@@ -63,5 +68,21 @@ public class AudioDirector : MonoBehaviour {
 	public void PlayFinal() {
 		final.Play();
 	}
+	public void PlayReset() {
+		AudioSource resetsound = resets.FirstOrDefault(p => !p.isPlaying);
+		if (resets.Count < 10 && resetsound == null)
+		{
+			resetsound = Instantiate<AudioSource>(reset, transform);
+			resetsound.pitch = Random.Range(-3, 4);
+			resetsound.Play();
+			resets.Add(resetsound);
+		}
+		else if (resetsound != null)
+			resetsound.Play();
 
+	}
+
+	public void PlayMoveWall() {
+		movewall.Play();
+	}
 }

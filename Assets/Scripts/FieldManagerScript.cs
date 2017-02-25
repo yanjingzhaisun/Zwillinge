@@ -70,8 +70,10 @@ public class FieldManagerScript : MonoBehaviour {
 	IEnumerator MoveBackground(Transform sprite, Vector3 movementAmount) {
 		Vector3 startPos = sprite.position;
 		Vector3 endPos = sprite.position + movementAmount;
+		AudioDirector.instance.PlayMoveWall();
 		float t = 0;
 		while(t < 1) {
+			
 			sprite.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0, 1, t));
 			t += Time.deltaTime;
 			yield return null;
