@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ReceiverScript : MonoBehaviour {
 
+	public float reverser = 1f;
+
 	public List<Sprite> ReceiverStatus;
 
 	public float speed;
