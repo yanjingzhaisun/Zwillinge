@@ -59,8 +59,8 @@ public class ReceiverScript : MonoBehaviour {
 			}
 
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-			temp.GetComponent<Wave>().SetProperties(movementVector, layer, radiusSize);
-			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2, layer));
+			temp.GetComponent<Wave>().SetProperties( 0.9f * movementVector, layer, radiusSize);
+			StartCoroutine(Move(new Vector3(movementVector.x, 2 * movementVector.y, 0), 5, layer));
 		}
 	}
 
@@ -87,6 +87,10 @@ public class ReceiverScript : MonoBehaviour {
 	IEnumerator Move(Vector3 movementVector, float timeInterval, int layerInfo) {
 		reverser = 1;
 		AudioDirector.instance.PlaySFX();
+
+		Vector3 orthoDir =  Vector3.Cross(movementVector, new Vector3(0, 0, 1f)).normalized;
+		movementVector += orthoDir * Random.Range(-0.3f, 0.3f) * movementVector.magnitude;
+
 		float t = 0;
 		while(t < timeInterval) {
 			transform.position += (movementVector * Time.deltaTime * speed * reverser);
