@@ -88,8 +88,8 @@ public class FieldManagerScript : MonoBehaviour {
 		player2.GetComponent<TrailRenderer>().enabled = true;*/
 		Vector3 p1StartPos = player1.transform.position;
 		Vector3 p2StartPos = player2.transform.position;
-		Vector3 p1EndPos = new Vector3(-15, 0, 0);
-		Vector3 p2EndPos = new Vector3(15, 0, 0);
+		Vector3 p1EndPos = new Vector3(-14, 0, 0);
+		Vector3 p2EndPos = new Vector3(14, 0, 0);
 		float t = 0;
 		while(t < 2) {
 			player1.transform.position = Vector3.Lerp(p1StartPos, p1EndPos, t/2f);
