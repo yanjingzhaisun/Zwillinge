@@ -29,17 +29,16 @@ public class FieldManagerScript : MonoBehaviour {
 			int p2Entries = p2Side.numEntries();
 			Vector3 movement = Vector3.zero;
 			if(p1Entries > p2Entries) {
-				//ScaleFields(p1Field, p2Field);
 				movement.x = 3;
 			}
 			else if(p2Entries > p1Entries) {
-				/*ScaleFields(p2Field, p1Field);
-				Debug.Log("scaling p2Fields");*/
 				movement.x = -3f;
 			}
-			p1Field.transform.position += movement;
+			StartCoroutine(MoveBackground(p1Field.transform, movement));
+			StartCoroutine(MoveBackground(p2Field.transform, movement));
+/*			p1Field.transform.position += movement;
 			p2Field.transform.position += movement;
-			if(p1Field.localPosition.x < -7) {
+*/			if(p1Field.localPosition.x < -7) {
 				Time.timeScale = 0;
 				Debug.Log("player 2 wins");
 			}
@@ -62,6 +61,17 @@ public class FieldManagerScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 		if(col.gameObject.tag == "Receiver") {
 			col.gameObject.GetComponent<ReceiverScript>().reverser = -1;
+		}
+	}
+
+	IEnumerator MoveBackground(Transform sprite, Vector3 movementAmount) {
+		Vector3 startPos = sprite.position;
+		Vector3 endPos = sprite.position + movementAmount;
+		float t = 0;
+		while(t < 1) {
+			sprite.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0, 1, t));
+			t += Time.deltaTime;
+			yield return null;
 		}
 	}
 }
