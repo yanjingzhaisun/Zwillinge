@@ -30,9 +30,10 @@ AudioMixerController:
     - eddbbe8cb197f4090a1fd040099530b0
     - 773d779cd040a426aaf1ead09b9f05f5
     - 44094d2a0c71b456389b7ab34b5c18cd
+    - 19d14fc2c93704325926fcbda6195e85
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 245817533341311062}
+  m_TargetSnapshot: {fileID: 245575144777589222}
 --- !u!243 &24300001
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -43,6 +44,7 @@ AudioMixerGroupController:
   m_GroupID: 402d260d32d6a4ac0bd4c1cfd6edec9a
   m_Children:
   - {fileID: 243336355542321562}
+  - {fileID: 243460500102459910}
   m_Volume: 7ea8efdacd9f24058ab8fce57bf714e2
   m_Pitch: 90911e16a0aaf4ec7abe371c00eda327
   m_Effects:
@@ -75,6 +77,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     78fb80d19ea894234913144e44ec8143: -0.54210335
     29da949226a0247e083992079e4f542f: -0.54210335
+    053cc3e5456d4449faf9d515254b5b82: -5.7224793
     623354e69c41e4fa7aea972366c513e8: -80
     eb3b1e784e0684807a2a0a38199ae739: -0.54210335
     46ee334a92cb049889ddac8a119759c2: -0.54210335
@@ -134,6 +137,23 @@ AudioMixerGroupController:
   m_Pitch: 5baf54a0626a84da1a412624723fe7b4
   m_Effects:
   - {fileID: 244039204506118850}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243460500102459910
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 19d14fc2c93704325926fcbda6195e85
+  m_Children: []
+  m_Volume: 053cc3e5456d4449faf9d515254b5b82
+  m_Pitch: 57d926149712842859f562cdbe2d9cb7
+  m_Effects:
+  - {fileID: 244084576065031362}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -215,6 +235,19 @@ AudioMixerEffectController:
   m_EffectID: a11bfa04b1fa54925a262633fc37d3a7
   m_EffectName: Attenuation
   m_MixLevel: b6d11269858784ef1b84b9100572e5fa
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244084576065031362
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 24164bbb6c7ad459fb682c8dc0a861b0
+  m_EffectName: Attenuation
+  m_MixLevel: fb15ab7f816ee472599ff4d7517a9cc7
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -308,6 +341,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     78fb80d19ea894234913144e44ec8143: -2.0844533
     29da949226a0247e083992079e4f542f: -80
+    053cc3e5456d4449faf9d515254b5b82: -6.133707
     623354e69c41e4fa7aea972366c513e8: -0.0024418721
     eb3b1e784e0684807a2a0a38199ae739: -0.54210335
     46ee334a92cb049889ddac8a119759c2: -80
@@ -325,6 +359,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     78fb80d19ea894234913144e44ec8143: -2.0844533
     29da949226a0247e083992079e4f542f: -80
+    053cc3e5456d4449faf9d515254b5b82: -5.7224774
     623354e69c41e4fa7aea972366c513e8: -0.0024418721
     eb3b1e784e0684807a2a0a38199ae739: -0.54210335
     46ee334a92cb049889ddac8a119759c2: -2.0844524
@@ -342,6 +377,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     78fb80d19ea894234913144e44ec8143: -80
     29da949226a0247e083992079e4f542f: -80
+    053cc3e5456d4449faf9d515254b5b82: -6.133707
     623354e69c41e4fa7aea972366c513e8: -0.0024418721
     eb3b1e784e0684807a2a0a38199ae739: -0.54210335
     46ee334a92cb049889ddac8a119759c2: -80
@@ -359,6 +395,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     78fb80d19ea894234913144e44ec8143: -2.0844533
     29da949226a0247e083992079e4f542f: -2.3589041
+    053cc3e5456d4449faf9d515254b5b82: -6.133707
     623354e69c41e4fa7aea972366c513e8: -0.0024418721
     eb3b1e784e0684807a2a0a38199ae739: -0.54210335
     46ee334a92cb049889ddac8a119759c2: -2.0844524
@@ -376,6 +413,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     78fb80d19ea894234913144e44ec8143: -80
     29da949226a0247e083992079e4f542f: -80
+    053cc3e5456d4449faf9d515254b5b82: -5.7224774
     623354e69c41e4fa7aea972366c513e8: -0.0024418721
     eb3b1e784e0684807a2a0a38199ae739: -0.54210335
     46ee334a92cb049889ddac8a119759c2: -80

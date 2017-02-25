@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.Audio;
 
 public class AudioDirector : MonoBehaviour {
 	public static AudioDirector instance;
 	public List<AudioMixerSnapshot> snapshots;
-	//public List<>
+	public List<AudioSource> SFXs;
 
 	void Awake() {
 		if (instance == null)
@@ -24,7 +25,8 @@ public class AudioDirector : MonoBehaviour {
 	}
 
 	void Start() {
-		PlaySnapshots(1);
+		SFXs = transform.Find("SFX").GetComponentsInChildren<AudioSource>().ToList();
+		PlaySnapshots(2);
 	}
 
 	void Update() {
@@ -46,7 +48,13 @@ public class AudioDirector : MonoBehaviour {
 		#endif
 	}
 
-	public void PlaySFX(int NoteNumber) { 
+	public void PlaySFX(int NoteNumber) {
+		NoteNumber = Mathf.Clamp(NoteNumber, 0, SFXs.Count - 1);
+		SFXs[NoteNumber].Play();
+	}
+	public void PlaySFX() {
+		int noteNumber = Random.Range(0, SFXs.Count);
+		PlaySFX(noteNumber);
 	}
 
 }
