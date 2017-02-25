@@ -27,6 +27,8 @@ public class FieldBehavior : MonoBehaviour {
 		foreach(GameObject obj in insideEntities) {
 			if(obj.layer == gameObject.layer) {
 				total++;
+				Debug.Log(obj.layer.ToString());
+				Debug.Log(gameObject.layer);
 			}
 			if(Random.value < LevelCreator.chanceOfReset) {
 				obj.GetComponent<ReceiverScript>().resetReceiver = true;
