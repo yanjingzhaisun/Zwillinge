@@ -94,7 +94,7 @@ public class SenderBehavior : MonoBehaviour {
 	void CreateWave(Vector2 movementVector) {
 		//Debug.Log("Create Wave movementVector " + movementVector.ToString());
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-		temp.GetComponent<Wave>().SetProperties(movementVector, 7 + (int)player, Wave.baseRadius);
+		temp.GetComponent<Wave>().SetProperties(movementVector, 7 + (int)player, Wave.baseRadius, true);
 	}
 
 	float GetMyInput(string axisName) {

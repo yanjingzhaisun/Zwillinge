@@ -16,6 +16,7 @@ public class Wave : MonoBehaviour {
 	public Action action;
 	public Vector2 movementVector;
 	public int layer;
+	public bool initialWave = false;
 	// Use this for initialization
 
 	void Awake () {
@@ -56,8 +57,18 @@ public class Wave : MonoBehaviour {
 #endif
 		}
 		else if (other.tag == "Player") {
-			if (layer == 9) {
+			if (layer == 9)
+			{
 				other.gameObject.GetComponent<SenderBehavior>().Stunned = true;
+			}
+			else if (layer == 7 && initialWave)
+			{
+				if (other.gameObject.name == "Player2")
+					other.gameObject.GetComponent<SenderBehavior>().Stunned = true;
+			}
+			else if (layer == 8 && initialWave){
+				if (other.gameObject.name == "Player1")
+					other.gameObject.GetComponent<SenderBehavior>().Stunned = true;
 			}
 		}
 	}
@@ -68,11 +79,13 @@ public class Wave : MonoBehaviour {
 		targetRadius = newRadius;
 	}
 
-	public void SetProperties(Vector2 newMovementVector,int newLayer, float newRadius) {
+	public void SetProperties(Vector2 newMovementVector, int newLayer, float newRadius, bool isInitial = false) {
 		movementVector = newMovementVector;
 		layer = newLayer;
 		targetRadius = newRadius;
+		initialWave = isInitial;
 		SetColor();
+
 	}
 
 	void SetColor() {
