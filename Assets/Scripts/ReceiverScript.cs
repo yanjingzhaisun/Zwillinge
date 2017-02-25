@@ -69,6 +69,7 @@ public class ReceiverScript : MonoBehaviour {
 	}
 
 	IEnumerator Move(Vector3 movementVector, float timeInterval) {
+		AudioDirector.instance.PlaySFX();
 		float t = 0;
 		while(t < timeInterval) {
 			transform.position += (movementVector * Time.deltaTime);
