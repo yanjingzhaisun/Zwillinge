@@ -9,6 +9,7 @@ public class ReceiverScript : MonoBehaviour {
 	public float speed;
 
 	public bool resetReceiver;
+	public int reverser = 1;
 	Queue<int> lark;
 	// Use this for initialization
 	void Start () {
@@ -46,7 +47,7 @@ public class ReceiverScript : MonoBehaviour {
 			}
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().SetProperties(movementVector, layer, radiusSize);
-			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2));
+			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 20));
 		}
 	}
 
@@ -71,10 +72,11 @@ public class ReceiverScript : MonoBehaviour {
 	}
 
 	IEnumerator Move(Vector3 movementVector, float timeInterval) {
+		reverser = 1;
 		AudioDirector.instance.PlaySFX();
 		float t = 0;
 		while(t < timeInterval) {
-			transform.position += (movementVector * Time.deltaTime * speed);
+			transform.position += (movementVector * Time.deltaTime * speed * reverser);
 			t += Time.deltaTime;
 			yield return null;
 		}
