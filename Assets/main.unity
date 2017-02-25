@@ -2107,7 +2107,7 @@ Light:
   serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 0.9739908, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 5.07
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2150,13 +2150,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1452086520}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 969ccc263cb3a40009172ecd44860c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashInterval: 1
-  brightnessLevel: 5
+  flashInterval: 0.5
+  brightnessLevel: 3
 --- !u!1 &1524702417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,7 +2186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 15
   height: 10
-  numReceivers: 50
+  numReceivers: 35
   numScoreAreas: 0
   receivers: []
 --- !u!4 &1524702419
@@ -2438,6 +2438,34 @@ Prefab:
     - target: {fileID: 4960788684628160, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626466843675552, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035939794030710, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905157472367790, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975325615628852, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283329325653284, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475045237689180, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361556868948418, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77a5c2b24ff0646c299d30c2cc23fc24, type: 2}
