@@ -68,9 +68,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expansionSpeed: 1.2
-  player1Color: {r: 1, g: 0.84705883, b: 0.21176471, a: 1}
-  player2Color: {r: 0.29411766, g: 0.7058824, b: 0.7490196, a: 1}
-  resetColor: {r: 0.5882354, g: 0, b: 1, a: 1}
+  player1Color: {r: 0.7647059, g: 0.3849123, b: 0.2980104, a: 1}
+  player2Color: {r: 0.23464532, g: 0.9117647, b: 0.74365234, a: 1}
+  resetColor: {r: 0.52205884, g: 0.52205884, b: 0.52205884, a: 1}
   action: 0
   movementVector: {x: 0, y: 0}
   layer: 0
