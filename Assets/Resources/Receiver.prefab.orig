@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58894628976654346}
   - component: {fileID: 114599098777931722}
   - component: {fileID: 114212629870175506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Receiver
   m_TagString: Receiver
   m_Icon: {fileID: 0}
@@ -37,13 +37,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094628350619090}
-<<<<<<< HEAD
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.34, y: 0.75, z: 0}
-=======
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
->>>>>>> a6efceb9f657c5f461dd7cb4c012d78ca00272c4
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,7 +118,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e098d6a38df084ae18716f9ff533ca12, type: 3}
   - {fileID: 21300000, guid: 218a48a03157645ab9cac324922a52c7, type: 3}
   speed: 1
+<<<<<<< HEAD
+  resetReceiver: 0
+=======
   resetReceiver: 1
+  reverser: 1
+>>>>>>> 34b6c592523136c3484386ee7f5b50388424a2f2
 --- !u!212 &212166176267669938
 SpriteRenderer:
   m_ObjectHideFlags: 1

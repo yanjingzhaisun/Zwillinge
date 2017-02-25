@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58894628976654346}
   - component: {fileID: 114599098777931722}
   - component: {fileID: 114212629870175506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Receiver
   m_TagString: Receiver
   m_Icon: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 218a48a03157645ab9cac324922a52c7, type: 3}
   speed: 1
   resetReceiver: 0
+  reverser: 1
 --- !u!212 &212166176267669938
 SpriteRenderer:
   m_ObjectHideFlags: 1

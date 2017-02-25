@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +9,13 @@ public class ReceiverScript : MonoBehaviour {
 	public float speed;
 
 	public bool resetReceiver;
+<<<<<<< HEAD
 	//Queue<int> lark;
 	bool[] layersInfluence = new bool[10];
+=======
+	public int reverser = 1;
+	Queue<int> lark;
+>>>>>>> 34b6c592523136c3484386ee7f5b50388424a2f2
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < layersInfluence.Length; i++)
@@ -58,7 +63,11 @@ public class ReceiverScript : MonoBehaviour {
 
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().SetProperties(movementVector, layer, radiusSize);
-			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2, layer));
+<<<<<<< HEAD
+			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2,layer));
+=======
+			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 20));
+>>>>>>> 34b6c592523136c3484386ee7f5b50388424a2f2
 		}
 	}
 
@@ -82,8 +91,12 @@ public class ReceiverScript : MonoBehaviour {
 		}
 	}
 
+<<<<<<< HEAD
 	IEnumerator Move(Vector3 movementVector, float timeInterval, int layerInfo) {
+=======
+	IEnumerator Move(Vector3 movementVector, float timeInterval) {
 		reverser = 1;
+>>>>>>> 34b6c592523136c3484386ee7f5b50388424a2f2
 		AudioDirector.instance.PlaySFX();
 		float t = 0;
 		while(t < timeInterval) {
