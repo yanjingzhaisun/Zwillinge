@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class AudioDirector : MonoBehaviour {
 	public static AudioDirector instance;
 	public List<AudioMixerSnapshot> snapshots;
-	public List<AudioSource> SFXs;
+	List<AudioSource> SFXs;
 
 	void Awake() {
 		if (instance == null)
