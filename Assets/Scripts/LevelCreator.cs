@@ -25,6 +25,7 @@ public class LevelCreator : MonoBehaviour {
 		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Receiver")) {
 			if(Random.value < chanceOfReset) {
 				obj.GetComponent<ReceiverScript>().resetReceiver = true;
+				Debug.Log("made a receiver");
 			}
 		}
 	}

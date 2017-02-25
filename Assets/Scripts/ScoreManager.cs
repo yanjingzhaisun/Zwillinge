@@ -30,8 +30,8 @@ public class ScoreManager : MonoBehaviour {
 
 
 		if (time >= 1f && enclosedReceivers.Count > 0) {
-			p1Score = TallyScore(7);
-			p2Score = TallyScore(8);
+			p1Score = p1Score + TallyScore(7);
+			p2Score = p2Score + TallyScore(8);
 			time = 0f;
 		}
 
