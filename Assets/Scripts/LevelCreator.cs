@@ -8,7 +8,7 @@ public class LevelCreator : MonoBehaviour {
 	public float height;
 	public int numReceivers;
 	public int numScoreAreas;
-	public static float chanceOfReset = 0.05f;
+	public static float chanceOfReset = 0.03f;
 
 	public List<ReceiverScript> receivers;
 	// Use this for initialization
