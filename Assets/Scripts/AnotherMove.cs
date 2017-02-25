@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnotherMove : MonoBehaviour {
 
-	private new Vector2 PlayerPosition;
+	private Vector2 PlayerPosition;
 
 	// Use this for initialization
 	void Start () {

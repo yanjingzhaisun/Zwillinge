@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 50454301897789144}
   - component: {fileID: 58894628976654346}
   - component: {fileID: 114599098777931722}
-  m_Layer: 0
+  - component: {fileID: 114212629870175506}
+  m_Layer: 10
   m_Name: Receiver
   m_TagString: Receiver
   m_Icon: {fileID: 0}
@@ -36,9 +37,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094628350619090}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.34, y: 0.75, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +77,31 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.3
+--- !u!114 &114212629870175506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1094628350619090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d77c5283a81f4073a3e2dfdd94e26ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0
+  p1Images:
+  - {fileID: 1426510675713038, guid: 179cd99a9552940eb8d47089b20e0bed, type: 2}
+  - {fileID: 1633621136456420, guid: d44f59fc1a6d143bf87121eec916eec2, type: 2}
+  - {fileID: 1618283419978516, guid: e933900b9d22548c0b2cc3da6429a135, type: 2}
+  p2Images:
+  - {fileID: 1159841362444968, guid: cb7b0355649d14bc299259ea55c15579, type: 2}
+  - {fileID: 1323031566788858, guid: 59077af9ee93c4b8394ee1ce42c42f21, type: 2}
+  - {fileID: 1025300628719224, guid: 7b341005702bc4dd585f1d0863294a8f, type: 2}
+  neutralImages:
+  - {fileID: 1239174871221884, guid: e8c993b7137574f0d8e716acacbe4876, type: 2}
+  - {fileID: 1793925284686682, guid: d2740817f9e704a37b76c83782285560, type: 2}
+  - {fileID: 1764587945552920, guid: fe1022ea787984391a0cb5042819b31b, type: 2}
 --- !u!114 &114599098777931722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,7 +113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729ca24c7fde94128964c6e13e5ceb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReceiverStatus:
+  - {fileID: 21300000, guid: d63d7587184a342e19f987ecb5af2ff8, type: 3}
+  - {fileID: 21300000, guid: e098d6a38df084ae18716f9ff533ca12, type: 3}
+  - {fileID: 21300000, guid: 218a48a03157645ab9cac324922a52c7, type: 3}
+  speed: 1
   resetReceiver: 0
+  reverser: 1
 --- !u!212 &212166176267669938
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -119,8 +150,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.41176468, g: 0.4269031, b: 0.4269031, a: 1}
+  m_SortingOrder: -3
+  m_Sprite: {fileID: 21300000, guid: d63d7587184a342e19f987ecb5af2ff8, type: 3}
+  m_Color: {r: 1, g: 0.964539, b: 0.964539, a: 1}
   m_FlipX: 0
   m_FlipY: 0

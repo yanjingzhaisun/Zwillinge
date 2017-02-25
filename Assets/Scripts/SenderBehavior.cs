@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,28 @@ public class SenderBehavior : MonoBehaviour {
 	public float shotCooldownTime;
 	private float coolDownTimer;
 	private string fireButton;
+
+	public float stunTime = 2f;
+	float _stunTimeCountDown = -1f;
+
+	bool _stunned = false;
+	public bool Stunned {
+		get {
+			return _stunned;
+		}
+		set {
+			if (_stunned != value) {
+				if (value)
+					OnStun();
+				else
+					OnResume();
+			}
+			_stunned = value;
+		}
+	}
+
+	List<Color> colorStatus;
+
 	KeyCode[] controls;
 	// Use this for initialization
 	void Start () {
@@ -26,14 +49,25 @@ public class SenderBehavior : MonoBehaviour {
 				GetComponent<SpriteRenderer>().color = Color.blue;
 				controls = new KeyCode[] {KeyCode.I, KeyCode.K, KeyCode.J, KeyCode.L};	
 			}
+		colorStatus = new List<Color>();
+		GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(p => colorStatus.Add(p.color));
 		coolDownTimer = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (_stunTimeCountDown > 0)
+		{
+			_stunTimeCountDown -= Time.deltaTime;
+			return;
+		}
+		else
+			Stunned = false;
+
 		transform.Translate(GetMyInput("Horizontal") * speed * Time.deltaTime, GetMyInput("Vertical") * speed * Time.deltaTime, 0);
 		if(Input.GetButtonDown(fireButton) && coolDownTimer <= 0) {
-			Debug.Log(fireButton);
+			//Debug.Log(fireButton);
 			CreateWave(new Vector2(GetMyInput("AimHorizontal"), GetMyInput("AimVertical")));
 			coolDownTimer = shotCooldownTime;
 		}
@@ -58,12 +92,24 @@ public class SenderBehavior : MonoBehaviour {
 	}
 
 	void CreateWave(Vector2 movementVector) {
-		Debug.Log("Create Wave movementVector " + movementVector.ToString());
+		//Debug.Log("Create Wave movementVector " + movementVector.ToString());
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-		temp.GetComponent<Wave>().SetProperties(movementVector, 7 + (int)player, Wave.baseRadius);
+		temp.GetComponent<Wave>().SetProperties(movementVector, 7 + (int)player, Wave.baseRadius, true);
 	}
 
 	float GetMyInput(string axisName) {
 		return Input.GetAxis(axisName + ((int)player).ToString());
+	}
+
+	public void OnStun() {
+		_stunTimeCountDown = stunTime;
+		GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(p => p.color = new Color32(0x5C, 0x5C, 0x5C, 0xFF));
+	}
+	public void OnResume() {
+		int i = 0;
+		GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(p => {
+			p.color = colorStatus[i];
+			i++;
+		});
 	}
 }
