@@ -13,7 +13,7 @@ public class TitleScreenManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetButtonDown("Fire2" )){
-			SceneManager.LoadScene("main");
+			SceneManager.LoadScene("tutorial");
 		}
 		if(Input.GetButtonDown("Fire3" )){
 			Debug.Log ("fire3");
