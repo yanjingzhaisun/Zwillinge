@@ -8,15 +8,12 @@ public class TotalScore : MonoBehaviour {
 	public GameObject Area2;
 	public GameObject Area3;
 	public GameObject scoretext;
-	new float totalscore;
-	new float score1;
-	new float score2;
-	new float score3;
+	float score1;
+	float score2;
+	float score3;
 
 	// Use this for initialization
 	void Start () {
-		totalscore = 0f;
-
 		
 	}
 	
@@ -27,10 +24,10 @@ public class TotalScore : MonoBehaviour {
 		score2 = Area2.GetComponent<ScoreManager>().score;
 		score3 = Area3.GetComponent<ScoreManager>().score;*/
 
-		Debug.Log("score1:"+score1+"score2:"+score2+"score3"+score3);
+		/*Debug.Log("score1:"+score1+"score2:"+score2+"score3"+score3);
 
 		totalscore = score1 + score2 + score3;
 
-		scoretext.GetComponent<TextMesh> ().text = "Score:" + totalscore;
+		scoretext.GetComponent<TextMesh> ().text = "Score:" + totalscore;*/
 	}
 }

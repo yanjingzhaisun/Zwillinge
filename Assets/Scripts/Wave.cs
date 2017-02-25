@@ -6,7 +6,6 @@ public class Wave : MonoBehaviour {
 
 	public float expansionSpeed;
 	private float size;
-	private float alpha = 1;
 	private float changeSpeed = 1.01f;
 	public static float baseRadius = 0.8f;
 	private float targetRadius = baseRadius;
