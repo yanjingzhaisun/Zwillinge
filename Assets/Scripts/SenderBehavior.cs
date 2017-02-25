@@ -14,6 +14,9 @@ public class SenderBehavior : MonoBehaviour {
 	private float coolDownTimer;
 	private string fireButton;
 
+	GameObject baseEmitter;
+	GameObject neutralEmitter;
+
 	public float stunTime = 2f;
 	float _stunTimeCountDown = -1f;
 
@@ -38,6 +41,9 @@ public class SenderBehavior : MonoBehaviour {
 	KeyCode[] controls;
 	// Use this for initialization
 	void Start () {
+		baseEmitter = transform.GetChild(0).gameObject;
+		neutralEmitter = transform.GetChild(1).gameObject;
+		neutralEmitter.SetActive(false);
 		if(player == Player.One) 
 			{
 				fireButton = "Fire0";
@@ -103,13 +109,17 @@ public class SenderBehavior : MonoBehaviour {
 
 	public void OnStun() {
 		_stunTimeCountDown = stunTime;
-		GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(p => p.color = new Color32(0x5C, 0x5C, 0x5C, 0xFF));
+		//GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(p => p.color = new Color32(0x5C, 0x5C, 0x5C, 0xFF));
+		baseEmitter.gameObject.SetActive(false);
+		neutralEmitter.gameObject.SetActive(true);
 	}
 	public void OnResume() {
-		int i = 0;
+		/*int i = 0;
 		GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(p => {
 			p.color = colorStatus[i];
 			i++;
-		});
+		});*/
+		baseEmitter.gameObject.SetActive(true);
+		neutralEmitter.gameObject.SetActive(false);
 	}
 }
