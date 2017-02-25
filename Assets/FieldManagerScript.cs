@@ -22,6 +22,7 @@ public class FieldManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		transform.position += new Vector3(Mathf.Sin(Time.time * 27) * 0.01f, 0, 0);
 		timer -= Time.deltaTime;
 		if(timer < 0) {
 			timer = timeInterval;
