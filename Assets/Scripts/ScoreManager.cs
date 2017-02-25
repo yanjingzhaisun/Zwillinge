@@ -10,8 +10,8 @@ public class ScoreManager : MonoBehaviour {
 	private List<GameObject> enclosedReceivers;
 	public static int p1Score;
 	public static int p2Score;
-	new int count;
-	new float time;
+	int count;
+	float time;
 
 	// Use this for initialization
 	void Awake () {

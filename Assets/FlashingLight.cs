@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlashingLight : MonoBehaviour {
 
-	Light light;
+	Light myLight;
 	AnimationCurve curve;
 	public float flashInterval;
 	public float brightnessLevel;
@@ -13,7 +13,7 @@ public class FlashingLight : MonoBehaviour {
 	void Start () {
 		curve = new AnimationCurve(new Keyframe[] {new Keyframe(0, 0), new Keyframe(flashInterval, brightnessLevel) });
 		curve.postWrapMode = WrapMode.PingPong;
-		light = GetComponent<Light>();	
+		myLight = GetComponent<Light>();	
 	}
 	
 	// Update is called once per frame
@@ -22,6 +22,6 @@ public class FlashingLight : MonoBehaviour {
 			timer = 0;
 		}
 		timer += Time.deltaTime;
-		light.intensity = curve.Evaluate(timer);
+		myLight.intensity = curve.Evaluate(timer);
 	}
 }
