@@ -42,13 +42,14 @@ public class FieldManagerScript : MonoBehaviour {
 				AudioDirector.instance.PlayFinal();
 				StartCoroutine(GameOver());
 				Time.timeScale = 0;
-				Debug.Log("player 2 wins");
+				WinScript.player1 = false;
 			}
 			else if(p2Field.localPosition.x > 7) {
 				StartCoroutine(GameOver());
 				AudioDirector.instance.PlayFinal();
 				Time.timeScale = 0;
 				Debug.Log("player 1 wins");
+				WinScript.player1 = true;
 			}
 		}
 	}
@@ -100,6 +101,6 @@ public class FieldManagerScript : MonoBehaviour {
 		}
 		AudioDirector.instance.PlaySnapshots(0);
 		yield return new WaitForSecondsRealtime(4);
-		SceneManager.LoadScene("WinScene");
+		SceneManager.LoadScene("Scene/EndScene");
 	}
 }
