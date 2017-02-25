@@ -27,21 +27,25 @@ public class FieldManagerScript : MonoBehaviour {
 			timer = timeInterval;
 			int p1Entries = p1Side.numEntries();
 			int p2Entries = p2Side.numEntries();
+			Vector3 movement = Vector3.zero;
 			if(p1Entries > p2Entries) {
-				ScaleFields(p1Field, p2Field);
-				Debug.Log("scaling p1Fields");
+				//ScaleFields(p1Field, p2Field);
+				movement.x = 3;
 			}
 			else if(p2Entries > p1Entries) {
-				ScaleFields(p2Field, p1Field);
-				Debug.Log("scaling p2Fields");
+				/*ScaleFields(p2Field, p1Field);
+				Debug.Log("scaling p2Fields");*/
+				movement.x = -3f;
 			}
-			if(p1Field.localScale.x > 100) {
-				Time.timeScale = 0;
-				Debug.Log("player 1 wins");
-			}
-			else if(p2Field.localScale.x > 100) {
+			p1Field.transform.position += movement;
+			p2Field.transform.position += movement;
+			if(p1Field.localPosition.x < -7) {
 				Time.timeScale = 0;
 				Debug.Log("player 2 wins");
+			}
+			else if(p2Field.localPosition.x > 7) {
+				Time.timeScale = 0;
+				Debug.Log("player 1 wins");
 			}
 		}
 	}
