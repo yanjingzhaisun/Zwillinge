@@ -11,7 +11,7 @@ public class FlashingLight : MonoBehaviour {
 	float timer;
 	// Use this for initialization
 	void Start () {
-		curve = new AnimationCurve(new Keyframe[] {new Keyframe(0, 0), new Keyframe(flashInterval, brightnessLevel) });
+		curve = new AnimationCurve(new Keyframe[] {new Keyframe(0, 1), new Keyframe(flashInterval, brightnessLevel) });
 		curve.postWrapMode = WrapMode.PingPong;
 		myLight = GetComponent<Light>();	
 	}

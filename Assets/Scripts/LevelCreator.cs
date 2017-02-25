@@ -8,7 +8,7 @@ public class LevelCreator : MonoBehaviour {
 	public float height;
 	public int numReceivers;
 	public int numScoreAreas;
-	public static float chanceOfReset = 0.03f;
+	public static float chanceOfReset = 0.01f;
 
 	public List<ReceiverScript> receivers;
 	// Use this for initialization
@@ -29,11 +29,17 @@ public class LevelCreator : MonoBehaviour {
 	}
 
 	void CreateObjects(string objectName, int count) {
-		for(int i = 0; i < count; i++) {
-			float randomX = (Random.value * width) - (width / 2);
+		for(int i = 0; i < count / 2; i++) {
+			float randomX = (Random.value * -width / 2);
 			float randomY = (Random.value * height) - (height / 2);
 			GameObject go = Instantiate(Resources.Load<GameObject>(objectName), new Vector3(randomX, randomY, 0), Quaternion.identity);
 			go.name = "Receiver " + i;
+		}
+
+		for(int i = count / 2; i < count; i++) {
+			float randomX = (Random.value * width / 2);
+			float randomY = (Random.value * height) - (height / 2);
+			GameObject go = Instantiate(Resources.Load<GameObject>(objectName), new Vector3(randomX, randomY, 0), Quaternion.identity);
 		}
 	}
 }

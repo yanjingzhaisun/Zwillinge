@@ -16,6 +16,7 @@ public class SenderBehavior : MonoBehaviour {
 
 	GameObject baseEmitter;
 	GameObject neutralEmitter;
+	GameObject coolDownIndicator;
 
 	public float stunTime = 2f;
 	float _stunTimeCountDown = -1f;
@@ -44,6 +45,7 @@ public class SenderBehavior : MonoBehaviour {
 		Time.timeScale = 1;
 		baseEmitter = transform.GetChild(0).gameObject;
 		neutralEmitter = transform.GetChild(1).gameObject;
+		coolDownIndicator = baseEmitter.transform.GetChild(1).gameObject;
 		neutralEmitter.SetActive(false);
 		if(player == Player.One) 
 			{
@@ -69,8 +71,10 @@ public class SenderBehavior : MonoBehaviour {
 			_stunTimeCountDown -= Time.deltaTime;
 			return;
 		}
-		else
+		else{
 			Stunned = false;
+			coolDownIndicator.SetActive(true);
+		}
 
 		transform.Translate(GetMyInput("Horizontal") * speed * Time.deltaTime, GetMyInput("Vertical") * speed * Time.deltaTime, 0);
 		if(Input.GetButtonDown(fireButton) && coolDownTimer <= 0) {
@@ -89,6 +93,12 @@ public class SenderBehavior : MonoBehaviour {
 		}
 		else if(Input.GetKeyDown(controls[3])) {
 			CreateWave(Action.Right);
+		}
+		if(coolDownTimer > 0) {
+			coolDownIndicator.SetActive(false);
+		}
+		else {
+			coolDownIndicator.SetActive(true);
 		}
 		coolDownTimer -= Time.deltaTime;
 	}

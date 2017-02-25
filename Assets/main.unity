@@ -2186,7 +2186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 15
   height: 10
-  numReceivers: 70
+  numReceivers: 50
   numScoreAreas: 0
   receivers: []
 --- !u!4 &1524702419

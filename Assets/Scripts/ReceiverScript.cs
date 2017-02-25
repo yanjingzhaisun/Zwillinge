@@ -132,7 +132,7 @@ public class ReceiverScript : MonoBehaviour {
 		Vector3 dir3 = Random.onUnitSphere;
 		Vector2 dir = (new Vector2(dir3.x, dir3.y));
 
-		temp.GetComponent<Wave>().SetProperties(dir, 9, 1);
+		temp.GetComponent<Wave>().SetProperties(dir, 9, 0.5f);
 		resetReceiver = false;
 
 
