@@ -82,15 +82,16 @@ public class ReceiverScript : MonoBehaviour {
 	void SetColor(int layer) {
 		if(layer == 7) {
 			GetComponent<SpriteRenderer>().sprite = ReceiverStatus[1];
-			GetComponent<AutoRotation>().rotationSpeed = 2f;
+
+			GetComponent<AutoRotation>().ChangeRotation(2f);
 		}
 		else if (layer == 8){
 				GetComponent<SpriteRenderer>().sprite = ReceiverStatus[2];
-			GetComponent<AutoRotation>().rotationSpeed = -2f;
+			GetComponent<AutoRotation>().ChangeRotation(-2f);
 		}
 		else {
 			GetComponent<SpriteRenderer>().sprite = ReceiverStatus[0];
-			GetComponent<AutoRotation>().rotationSpeed = 0f;
+			GetComponent<AutoRotation>().ChangeRotation(0f);
 		}
 	}
 
