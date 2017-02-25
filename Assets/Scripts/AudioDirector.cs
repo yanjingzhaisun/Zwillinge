@@ -68,6 +68,7 @@ public class AudioDirector : MonoBehaviour {
 	public void PlayFinal() {
 		final.Play();
 	}
+
 	public void PlayReset() {
 		AudioSource resetsound = resets.FirstOrDefault(p => !p.isPlaying);
 		if (resets.Count < 10 && resetsound == null)
