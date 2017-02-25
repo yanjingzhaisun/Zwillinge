@@ -26,7 +26,7 @@ public class Wave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		size += (Time.deltaTime * changeSpeed);
+		size += (Time.unscaledDeltaTime * changeSpeed);
 		RescaleObject();
 
 	}

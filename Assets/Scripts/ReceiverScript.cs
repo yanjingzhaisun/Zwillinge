@@ -42,25 +42,20 @@ public class ReceiverScript : MonoBehaviour {
 	public void Relay(Vector2 movementVector, int layer, float radiusSize) {
 		if (resetReceiver)
 			Debug.Log(gameObject.name);
-		if ((!layersInfluence[layer]) && (!layersInfluence[9]))
+		if ((!layersInfluence[layer]) /*&& (!layersInfluence[9])*/)
 		{
 			layersInfluence[layer] = true;
-			//Debug.Log("<b>REceiverScript</b>: in " + gameObject.name  + " " + lark.Count);
 			gameObject.layer = layer;
 			SetColor(layer);
-			if (resetReceiver && layer != 9)
+			if ((resetReceiver && layer != 9) || layer == 9)
 			{
-				ResetRelay(movementVector);
-				return;
-			}
-			else if (layer == 9){
 				ResetRelay(movementVector);
 				return;
 			}
 
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().SetProperties( 0.9f * movementVector, layer, radiusSize);
-			StartCoroutine(Move(new Vector3(movementVector.x, 2 * movementVector.y, 0), 5, layer));
+			StartCoroutine(Move(new Vector3(movementVector.x, 2 * movementVector.y, 0), 8, layer));
 		}
 	}
 
