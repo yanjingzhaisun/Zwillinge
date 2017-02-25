@@ -39,7 +39,6 @@ public class ReceiverScript : MonoBehaviour {
 			gameObject.layer = layer;
 			SetColor(layer);
 			if(resetReceiver && layer != 9) {
-				Debug.Log("resetting" + lark.Contains(layer).ToString());
 				ResetRelay(movementVector);
 				return;
 			}
