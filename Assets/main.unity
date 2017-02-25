@@ -378,7 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 0
   speed: 2
-  shotCooldownTime: 0
+  shotCooldownTime: 1
 --- !u!212 &504450144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -620,6 +620,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114599098777931722, guid: 665f8100877c04c8799c4c0bae9ebde5,
+        type: 2}
+      propertyPath: resetReceiver
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 665f8100877c04c8799c4c0bae9ebde5, type: 2}
   m_IsPrefabParent: 0
@@ -653,7 +658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 1
   speed: 2
-  shotCooldownTime: 0
+  shotCooldownTime: 1
 --- !u!212 &1307317483
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -815,7 +820,7 @@ MonoBehaviour:
   height: 20
   numReceivers: 100
   numScoreAreas: 5
-  chanceOfReset: 0
+  chanceOfReset: 0.02
 --- !u!4 &1524702419
 Transform:
   m_ObjectHideFlags: 0
