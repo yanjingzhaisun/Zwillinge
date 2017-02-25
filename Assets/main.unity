@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 0
-  speed: 2
+  speed: 5
   shotCooldownTime: 1
 --- !u!212 &504450144
 SpriteRenderer:
@@ -545,23 +545,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &786285024 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1094628350619090, guid: 665f8100877c04c8799c4c0bae9ebde5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1302244301}
---- !u!114 &786285025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 786285024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d77c5283a81f4073a3e2dfdd94e26ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 0
 --- !u!1 &1029688941
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,8 +722,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114599098777931722, guid: 665f8100877c04c8799c4c0bae9ebde5,
         type: 2}
-      propertyPath: resetReceiver
-      value: 1
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 665f8100877c04c8799c4c0bae9ebde5, type: 2}
@@ -774,7 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 1
-  speed: 2
+  speed: 5
   shotCooldownTime: 1
 --- !u!212 &1307317483
 SpriteRenderer:

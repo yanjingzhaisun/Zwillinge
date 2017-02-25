@@ -6,6 +6,8 @@ public class ReceiverScript : MonoBehaviour {
 
 	public List<Sprite> ReceiverStatus;
 
+	public float speed;
+
 	public bool resetReceiver;
 	Queue<int> lark;
 	// Use this for initialization
@@ -72,7 +74,7 @@ public class ReceiverScript : MonoBehaviour {
 		AudioDirector.instance.PlaySFX();
 		float t = 0;
 		while(t < timeInterval) {
-			transform.position += (movementVector * Time.deltaTime);
+			transform.position += (movementVector * Time.deltaTime * speed);
 			t += Time.deltaTime;
 			yield return null;
 		}
