@@ -378,6 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 0
   speed: 2
+  shotCooldownTime: 0
 --- !u!212 &504450144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -635,6 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 1
   speed: 2
+  shotCooldownTime: 0
 --- !u!212 &1307317483
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -782,7 +784,7 @@ MonoBehaviour:
   height: 20
   numReceivers: 100
   numScoreAreas: 5
-  chanceOfReset: 0.05
+  chanceOfReset: 0
 --- !u!4 &1524702419
 Transform:
   m_ObjectHideFlags: 0

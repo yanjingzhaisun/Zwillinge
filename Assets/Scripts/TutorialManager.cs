@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleScreenManager : MonoBehaviour {
+public class TutorialManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -14,10 +14,6 @@ public class TitleScreenManager : MonoBehaviour {
 	void Update () {
 		if(Input.GetButtonDown("Fire2" )){
 			SceneManager.LoadScene("main");
-		}
-		if(Input.GetButtonDown("Fire3" )){
-			Debug.Log ("fire3");
-			SceneManager.LoadScene("tutorial");
 		}
 	}
 }
