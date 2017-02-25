@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FieldManagerScript : MonoBehaviour {
 
@@ -41,13 +42,14 @@ public class FieldManagerScript : MonoBehaviour {
 				AudioDirector.instance.PlayFinal();
 				StartCoroutine(GameOver());
 				Time.timeScale = 0;
-				Debug.Log("player 2 wins");
+				WinScript.player1 = false;
 			}
 			else if(p2Field.localPosition.x > 7) {
 				StartCoroutine(GameOver());
 				AudioDirector.instance.PlayFinal();
 				Time.timeScale = 0;
 				Debug.Log("player 1 wins");
+				WinScript.player1 = true;
 			}
 		}
 	}
@@ -98,6 +100,7 @@ public class FieldManagerScript : MonoBehaviour {
 			yield return null;
 		}
 		AudioDirector.instance.PlaySnapshots(0);
-
+		yield return new WaitForSecondsRealtime(4);
+		SceneManager.LoadScene("Scene/EndScene");
 	}
 }
