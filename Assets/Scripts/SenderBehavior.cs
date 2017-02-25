@@ -41,6 +41,7 @@ public class SenderBehavior : MonoBehaviour {
 	KeyCode[] controls;
 	// Use this for initialization
 	void Start () {
+		Time.timeScale = 1;
 		baseEmitter = transform.GetChild(0).gameObject;
 		neutralEmitter = transform.GetChild(1).gameObject;
 		neutralEmitter.SetActive(false);
