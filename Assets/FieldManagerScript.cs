@@ -24,15 +24,24 @@ public class FieldManagerScript : MonoBehaviour {
 	void Update () {
 		timer -= Time.deltaTime;
 		if(timer < 0) {
-			Debug.Log("tug o war");
 			timer = timeInterval;
 			int p1Entries = p1Side.numEntries();
 			int p2Entries = p2Side.numEntries();
 			if(p1Entries > p2Entries) {
 				ScaleFields(p1Field, p2Field);
+				Debug.Log("scaling p1Fields");
 			}
 			else if(p2Entries > p1Entries) {
 				ScaleFields(p2Field, p1Field);
+				Debug.Log("scaling p2Fields");
+			}
+			if(p1Field.localScale.x > 100) {
+				Time.timeScale = 0;
+				Debug.Log("player 1 wins");
+			}
+			else if(p2Field.localScale.x > 100) {
+				Time.timeScale = 0;
+				Debug.Log("player 2 wins");
 			}
 		}
 	}
@@ -42,13 +51,12 @@ public class FieldManagerScript : MonoBehaviour {
 		temp += new Vector3(10, 0, 0);
 		biggerField.localScale = temp;
 		temp = smallerField.localScale;
-		temp -= new Vector3(-10, 0, 0);
+		temp -= new Vector3(10, 0, 0);
 		smallerField.localScale = temp;
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if(col.gameObject.tag == "Receiver") {
-			Debug.Log("receiver found");
 			col.gameObject.GetComponent<ReceiverScript>().reverser = -1;
 		}
 	}
