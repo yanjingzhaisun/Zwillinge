@@ -11,11 +11,15 @@ public class FieldBehavior : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		insideEntities.Add(other.gameObject);
+		if(other.tag == "Receiver") {
+			insideEntities.Add(other.gameObject);
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
-		insideEntities.Remove(other.gameObject);
+		if(other.tag == "Receiver") {
+			insideEntities.Remove(other.gameObject);
+			}
 	}
 
 	public int numEntries() {
@@ -23,6 +27,9 @@ public class FieldBehavior : MonoBehaviour {
 		foreach(GameObject obj in insideEntities) {
 			if(obj.layer == gameObject.layer) {
 				total++;
+			}
+			if(Random.value < LevelCreator.chanceOfReset) {
+				obj.GetComponent<ReceiverScript>().resetReceiver = true;
 			}
 		}
 

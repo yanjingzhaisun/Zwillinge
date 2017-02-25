@@ -37,13 +37,13 @@ public class FieldManagerScript : MonoBehaviour {
 			}
 			StartCoroutine(MoveBackground(p1Field.transform, movement));
 			StartCoroutine(MoveBackground(p2Field.transform, movement));
-/*			p1Field.transform.position += movement;
-			p2Field.transform.position += movement;
-*/			if(p1Field.localPosition.x < -7) {
+			if(p1Field.localPosition.x < -7) {
+				StartCoroutine(GameOver());
 				Time.timeScale = 0;
 				Debug.Log("player 2 wins");
 			}
 			else if(p2Field.localPosition.x > 7) {
+				StartCoroutine(GameOver());
 				Time.timeScale = 0;
 				Debug.Log("player 1 wins");
 			}
@@ -74,5 +74,25 @@ public class FieldManagerScript : MonoBehaviour {
 			t += Time.deltaTime;
 			yield return null;
 		}
+	}
+
+	IEnumerator GameOver() {
+		GameObject player1 = GameObject.FindGameObjectsWithTag("Player")[0];
+		GameObject player2 = GameObject.FindGameObjectsWithTag("Player")[1];
+
+		/*player1.GetComponent<TrailRenderer>().enabled = true;
+		player2.GetComponent<TrailRenderer>().enabled = true;*/
+		Vector3 p1StartPos = player1.transform.position;
+		Vector3 p2StartPos = player2.transform.position;
+		Vector3 p1EndPos = new Vector3(-15, 0, 0);
+		Vector3 p2EndPos = new Vector3(15, 0, 0);
+		float t = 0;
+		while(t < 1) {
+			player1.transform.position = Vector3.Lerp(p1StartPos, p1EndPos, t);
+			player2.transform.position = Vector3.Lerp(p2StartPos, p2EndPos, t);
+			t += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
 	}
 }
