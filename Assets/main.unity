@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 460166049}
   - component: {fileID: 460166048}
   - component: {fileID: 460166053}
+  - component: {fileID: 460166054}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -480,6 +481,20 @@ MonoBehaviour:
   players:
   - {fileID: 504450142}
   - {fileID: 1307317481}
+--- !u!114 &460166054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 460166047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478a2083ad114a07d000fbfb8d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
+  blurAmount: 0.3
+  extraBlur: 0
 --- !u!1 &504450142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1130,7 @@ MonoBehaviour:
   numReceivers: 100
   numScoreAreas: 5
   chanceOfReset: 0.02
+  receivers: []
 --- !u!4 &1524702419
 Transform:
   m_ObjectHideFlags: 0
