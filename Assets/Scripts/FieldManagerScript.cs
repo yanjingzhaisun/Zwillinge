@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FieldManagerScript : MonoBehaviour {
 
@@ -98,6 +99,7 @@ public class FieldManagerScript : MonoBehaviour {
 			yield return null;
 		}
 		AudioDirector.instance.PlaySnapshots(0);
-
+		yield return new WaitForSecondsRealtime(4);
+		SceneManager.LoadScene("WinScene");
 	}
 }
