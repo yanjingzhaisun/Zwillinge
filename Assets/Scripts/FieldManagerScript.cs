@@ -38,12 +38,14 @@ public class FieldManagerScript : MonoBehaviour {
 			StartCoroutine(MoveBackground(p1Field.transform, movement));
 			StartCoroutine(MoveBackground(p2Field.transform, movement));
 			if(p1Field.localPosition.x < -7) {
+				AudioDirector.instance.PlayFinal();
 				StartCoroutine(GameOver());
 				Time.timeScale = 0;
 				Debug.Log("player 2 wins");
 			}
 			else if(p2Field.localPosition.x > 7) {
 				StartCoroutine(GameOver());
+				AudioDirector.instance.PlayFinal();
 				Time.timeScale = 0;
 				Debug.Log("player 1 wins");
 			}
@@ -87,12 +89,13 @@ public class FieldManagerScript : MonoBehaviour {
 		Vector3 p1EndPos = new Vector3(-15, 0, 0);
 		Vector3 p2EndPos = new Vector3(15, 0, 0);
 		float t = 0;
-		while(t < 1) {
-			player1.transform.position = Vector3.Lerp(p1StartPos, p1EndPos, t);
-			player2.transform.position = Vector3.Lerp(p2StartPos, p2EndPos, t);
+		while(t < 2) {
+			player1.transform.position = Vector3.Lerp(p1StartPos, p1EndPos, t/2f);
+			player2.transform.position = Vector3.Lerp(p2StartPos, p2EndPos, t/2f);
 			t += Time.unscaledDeltaTime;
 			yield return null;
 		}
+		AudioDirector.instance.PlaySnapshots(0);
 
 	}
 }
