@@ -16,6 +16,6 @@ public class CameraPosition : MonoBehaviour {
 		Vector3 vect = (players[0].transform.position + players[1].transform.position) / 2;
 		transform.position = Vector3.Lerp(transform.position, new Vector3(vect.x, vect.y, transform.position.z), 0.5f);
 		float distance = Vector3.Distance(players[0].transform.position, players[1].transform.position);
-		Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, distance / 2f, 0.5f);
+		Camera.main.orthographicSize = Mathf.Clamp(Mathf.Lerp(Camera.main.orthographicSize, distance / 2f, 0.5f), 2f, 20f);
 	}
 }

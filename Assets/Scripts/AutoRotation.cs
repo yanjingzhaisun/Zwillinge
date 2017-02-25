@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AutoRotation : MonoBehaviour {
 
+
 	public float rotationSpeed;
 
 	public GameObject[] p1Images;
@@ -56,10 +57,10 @@ public class AutoRotation : MonoBehaviour {
 
 	public void ChangeRotation(float newRotation) {
 		rotationSpeed = newRotation;
-		if(newRotation > 0) {
+		if(newRotation > 0.1f) {
 			currentImages = p1Images;
 		}
-		else if(newRotation < 0) {
+		else if(newRotation < -0.1f) {
 			currentImages = p2Images;
 		}
 		else {

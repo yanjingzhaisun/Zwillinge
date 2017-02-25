@@ -9,10 +9,12 @@ public class ReceiverScript : MonoBehaviour {
 	public float speed;
 
 	public bool resetReceiver;
-	Queue<int> lark;
+	//Queue<int> lark;
+	bool[] layersInfluence = new bool[10];
 	// Use this for initialization
 	void Start () {
-		lark = new Queue<int>();
+		for (int i = 0; i < layersInfluence.Length; i++)
+			layersInfluence[i] = false;
 	}
 	
 	// Update is called once per frame
@@ -21,8 +23,8 @@ public class ReceiverScript : MonoBehaviour {
 	}
 
 	public void Relay(Action action, int layer, float radiusSize) {
-		if(!lark.Contains(layer)) {
-			lark.Enqueue(layer);
+		if(!layersInfluence[layer]) {
+			layersInfluence[layer] = true;
 			gameObject.layer = layer;
 			SetColor(layer);
 			if(resetReceiver) {
@@ -31,38 +33,48 @@ public class ReceiverScript : MonoBehaviour {
 			}
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().SetProperties(action, layer, radiusSize);
-			InterpretAction(action);
+			InterpretAction(action, layer);
 		}
 	}
 
 	public void Relay(Vector2 movementVector, int layer, float radiusSize) {
-		if(!lark.Contains(layer)) {
-			lark.Enqueue(layer);
+		if (resetReceiver)
+			Debug.Log(gameObject.name);
+		if ((!layersInfluence[layer]) && (!layersInfluence[9]))
+		{
+			layersInfluence[layer] = true;
+			//Debug.Log("<b>REceiverScript</b>: in " + gameObject.name  + " " + lark.Count);
 			gameObject.layer = layer;
 			SetColor(layer);
-			if(resetReceiver && layer != 9) {
+			if (resetReceiver && layer != 9)
+			{
 				ResetRelay(movementVector);
 				return;
 			}
+			else if (layer == 9){
+				ResetRelay(movementVector);
+				return;
+			}
+
 			GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 			temp.GetComponent<Wave>().SetProperties(movementVector, layer, radiusSize);
-			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2));
+			StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 2,layer));
 		}
 	}
 
-	void InterpretAction(Action action) {
+	void InterpretAction(Action action, int layer) {
 		switch(action) {
 			case Action.Up:
-				StartCoroutine(Move(Vector3.up, 2));
+				StartCoroutine(Move(Vector3.up, 2, layer));
 				break;
 			case Action.Down:
-				StartCoroutine(Move(Vector3.down, 1));
+				StartCoroutine(Move(Vector3.down, 1, layer));
 				break;
 			case Action.Left:
-				StartCoroutine(Move(Vector3.left, 3));
+				StartCoroutine(Move(Vector3.left, 3, layer));
 				break;
 			case Action.Right:
-				StartCoroutine(Move(Vector3.right, 4));
+				StartCoroutine(Move(Vector3.right, 4, layer));
 				break;
 			default:
 				Debug.LogError("Unverified Action came through");
@@ -70,7 +82,7 @@ public class ReceiverScript : MonoBehaviour {
 		}
 	}
 
-	IEnumerator Move(Vector3 movementVector, float timeInterval) {
+	IEnumerator Move(Vector3 movementVector, float timeInterval, int layerInfo) {
 		AudioDirector.instance.PlaySFX();
 		float t = 0;
 		while(t < timeInterval) {
@@ -78,7 +90,8 @@ public class ReceiverScript : MonoBehaviour {
 			t += Time.deltaTime;
 			yield return null;
 		}
-		lark.Dequeue();
+		layersInfluence[layerInfo] = false;
+		//Debug.Log("<b>REceiverScript</b>: out " + gameObject.name + " " + lark.Count);
 	}
 
 	void SetColor(int layer) {
@@ -98,16 +111,27 @@ public class ReceiverScript : MonoBehaviour {
 	}
 
 	void ResetRelay(Action action) {
-		lark.Enqueue(9);
+		//lark.Enqueue(9);
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
 		temp.GetComponent<Wave>().SetProperties(action, 9, 1);
 		resetReceiver = false;
 	}
 
 	void ResetRelay(Vector2 movementVector) {
-		lark.Enqueue(9);
+		//lark.Enqueue(9);
+		SetColor(9);
+		for (int i = 0; i < layersInfluence.Length; i++)
+			layersInfluence[i] = false;
+		layersInfluence[9] = true;
+		
 		GameObject temp = Instantiate(Resources.Load<GameObject>("Wave"), transform.position, Quaternion.identity);
-		temp.GetComponent<Wave>().SetProperties(movementVector, 9, 1);
+		Vector3 dir3 = Random.onUnitSphere;
+		Vector2 dir = (new Vector2(dir3.x, dir3.y));
+
+		temp.GetComponent<Wave>().SetProperties(dir, 9, 1);
 		resetReceiver = false;
+
+
+		StartCoroutine(Move(new Vector3(movementVector.x, movementVector.y, 0), 4, 9));
 	}
 }

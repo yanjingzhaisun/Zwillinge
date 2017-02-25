@@ -9,6 +9,8 @@ public class LevelCreator : MonoBehaviour {
 	public int numReceivers;
 	public int numScoreAreas;
 	public float chanceOfReset;
+
+	public List<ReceiverScript> receivers;
 	// Use this for initialization
 	void Start () {
 		/*for(int i = 0; i < numReceivers; i++) {
@@ -19,7 +21,6 @@ public class LevelCreator : MonoBehaviour {
 		for(int i = 0; i < numScoreAreas; i++) {
 			
 		}*/
-
 		CreateObjects("Receiver", numReceivers);
 		CreateObjects("Area", numScoreAreas);
 		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Receiver")) {
@@ -39,7 +40,8 @@ public class LevelCreator : MonoBehaviour {
 		for(int i = 0; i < count; i++) {
 			float randomX = (Random.value * width) - (width / 2);
 			float randomY = (Random.value * height) - (height / 2);
-			Instantiate(Resources.Load<GameObject>(objectName), new Vector3(randomX, randomY, 0), Quaternion.identity);
+			GameObject go = Instantiate(Resources.Load<GameObject>(objectName), new Vector3(randomX, randomY, 0), Quaternion.identity);
+			go.name = "Receiver " + i;
 		}
 	}
 }
